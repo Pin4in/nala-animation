@@ -2516,7 +2516,7 @@ footer .navbar-brand { color: #fff !important; font-size: 45px; font-weight: 700
 header.masthead { padding-top: 10rem; padding-bottom: calc(10rem - 4.5rem); background: url("../images/banner.jpg"); background-position: center; background-repeat: no-repeat; background-attachment: scroll; background-size: cover; }
 header.masthead h1 { font-size: 2.25rem; }
 @media (min-width: 992px) {
-header.masthead { /*height: 100vh;*/ min-height: 40rem; padding-top: 61px; padding-bottom: 0; }
+header.masthead { height: 100vh; min-height: 40rem; padding-top: 61px; padding-bottom: 0; }
 header.masthead p { font-size: 1.15rem; }
 header.masthead h1 { font-size: 3rem; }
 }
@@ -2566,12 +2566,12 @@ background-position: right;
     background-attachment: fixed;
     background-size: contain;
 }*/
-.about-animations .block {padding: 100px 0;}
-.about-animations .block-1 {padding-top: 180px;}
-.about-animations .block h2 {width: 80%;}
-.text-sub-block { width: 75%; padding: 65px;display: inline-block;}
-.text-sub-block h3 {color: #CC7E4D;font-size: 30px; }
-.text-sub-block p {font-size: 22px; line-height: 36px;}
+/* .about-animations .block {padding: 100px 0;} */
+/* .about-animations .block-1 {padding-top: 180px;} */
+/* .about-animations .block h2 {width: 80%;} */
+/* .text-sub-block { width: 75%; padding: 65px;display: inline-block;}
+.text-sub-block h3 {color: #CC7E4D;font-size: 30px; } */
+/* .text-sub-block p {font-size: 22px; line-height: 36px;} */
 
 
 
@@ -2593,7 +2593,7 @@ background-position: top;
 .icons-block p {font-size: 24px; line-height: 36px;}
 
 
-.gear { height: auto; top: 70px; max-width: 100%; position: sticky; }
+/* .gear { height: auto; top: 70px; max-width: 100%; position: sticky; } */
 
 
 
@@ -2644,7 +2644,7 @@ footer { padding: 15px 0; background: #1D2531; }
 .footer-links ul .nav-link { padding-right: 0.5rem; padding-left: 0.5rem;     color: #fff !important;}
 #rightgear {animation: rotating 2s linear infinite;}
 
-.about-animations p { font-size: 32px;    line-height: 48px;}
+/* .about-animations p { font-size: 32px;    line-height: 48px;} */
 .about-page header.masthead {background: url(../images/about-banner.jpg);    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;}
@@ -2688,12 +2688,12 @@ footer { padding: 15px 0; background: #1D2531; }
     header.masthead h1 {font-size: 35px;line-height: 45px;}
     header.masthead p {font-size: 16px; line-height: 24px;padding: 0 20px;width: 300px;margin: auto; }    
     .page-section {padding: 40px 0;}
-    .about-animations .about-text {width: 300px !important; text-align: center; margin: auto; line-height: 36px;font-size: 24px;}  
+    /* .about-animations .about-text {width: 300px !important; text-align: center; margin: auto; line-height: 36px;font-size: 24px;}   */
     .masthead a.form-btn { width: 188px !important; font-size: 16px !important; height: 51px; }
     .text-sub-block p {font-size: 17px; line-height: 30px;}
     .text-sub-block {width: 100%; padding: 30px 0 0 0;}
-    .about-animations .block {padding: 0;}
-    .about-animations .about-text {width: 100% !important;}
+    /* .about-animations .block {padding: 0;}
+    .about-animations .about-text {width: 100% !important;} */
     .text-sub-block h3 {font-size: 22px;}
     #rightgear {display: none;}
     .home-slide h2 {font-size: 30px; line-height: 39px;width: 330px;}
@@ -2755,12 +2755,12 @@ footer { padding: 15px 0; background: #1D2531; }
     header.masthead h1 {font-size: 35px;line-height: 45px;}
     header.masthead p {font-size: 16px; line-height: 24px;padding: 0 20px;width: 300px;margin: auto; }    
     .page-section {padding: 40px 0;}
-    .about-animations .about-text {width: 300px !important; text-align: center; margin: auto; line-height: 36px;font-size: 24px;}  
+    /* .about-animations .about-text {width: 300px !important; text-align: center; margin: auto; line-height: 36px;font-size: 24px;}   */
     /*.masthead a.form-btn { width: 188px !important; font-size: 16px !important; line-height: 36px !important; height: 51px; }*/
     .text-sub-block p {font-size: 17px; line-height: 30px;}
     .text-sub-block {width: 100%; padding: 30px 0 0 0;}
-    .about-animations .block {padding: 0;}
-    .about-animations .about-text {width: 100% !important;}
+    /* .about-animations .block {padding: 0;}
+    .about-animations .about-text {width: 100% !important;} */
     .text-sub-block h3 {font-size: 22px;}
     #rightgear {display: none;}
     .home-slide h2 {font-size: 30px; line-height: 39px;width: 330px;}
@@ -2817,9 +2817,9 @@ footer { padding: 15px 0; background: #1D2531; }
     header.masthead h1 {font-size: 50px;}
     header.masthead p {font-size: 22px;line-height: 33px;width: 400px;margin: auto;} 
     .page-section {padding: 40px 0;}
-    .about-animations .about-text {text-align: center;width: 460px;margin: auto;font-size: 26px;line-height: 39px;}
+    /* .about-animations .about-text {text-align: center;width: 460px;margin: auto;font-size: 26px;line-height: 39px;} */
     .text-sub-block p {font-size: 17px; line-height: 30px;}  
-    .about-animations .block {padding: 50px 0;}    
+    /* .about-animations .block {padding: 50px 0;}     */
     .text-sub-block {width: 100%; padding: 30px 0 0 0;}
     .text-sub-block h3 {font-size: 22px;}
     .icons-block {padding: 30px;}
@@ -2869,10 +2869,10 @@ footer { padding: 15px 0; background: #1D2531; }
     header.masthead h1 { font-size: 60px; line-height: 77px;}    
     header.masthead p {font-size: 26px;line-height: 39px;width: 421px; max-width: 600px !important;margin: auto;} 
     .page-section {padding: 40px 0;}
-    .about-animations .about-text {text-align: center;width: 460px;margin: auto;font-size: 26px;line-height: 39px;}
+    /* .about-animations .about-text {text-align: center;width: 460px;margin: auto;font-size: 26px;line-height: 39px;}
    
     .about-animations .block {padding: 0;}  
-    .about-animations .block h2 {width: 100%;font-size: 24px;} 
+    .about-animations .block h2 {width: 100%;font-size: 24px;}  */
     .text-sub-block {width: 100%; padding: 60px 0;}  
     .icons-block {padding: 50px;}
     .icons-block h4 {    font-size: 16px;
@@ -2917,7 +2917,7 @@ footer { padding: 15px 0; background: #1D2531; }
 
 @media (min-width: 992px) and (max-width: 1199.98px) { 
     header.masthead h1 {font-size: 80px;padding-top: 40px;    line-height: 103px;}
-    .about-animations .about-text {font-size: 36px; line-height: 54px;    width: 567px;}
+    /* .about-animations .about-text {font-size: 36px; line-height: 54px;    width: 567px;} */
     header.masthead p {font-size: 36px;line-height: 54px;width: 580px; max-width: 600px !important;margin: auto;} 
     .masthead {text-align: center;}
     .masthead a.form-btn {width: 342px; margin: auto;font-size: 20px;line-height: 51px;font-weight: 400;margin-bottom: 30px;height:64px;}
@@ -2926,7 +2926,7 @@ footer { padding: 15px 0; background: #1D2531; }
     .banner-robot-img2 {display: block;margin: auto;}
     header.masthead p {margin: auto;}
     .text-sub-block {width: 100%;}
-    .about-animations .block {padding: 0;} 
+    /* .about-animations .block {padding: 0;}  */
     .icons-block {padding: 80px;} 
     .icons-block h4 {font-size: 20px;    width: 180px;    margin: auto;    line-height: 30px;}
     .testimonial-1 {margin-left: 60px; margin-top: 10px;}
@@ -3032,7 +3032,7 @@ footer { padding: 15px 0; background: #1D2531; }
 }
 @media (min-width: 992px) { 
     header.masthead p {max-width: 370px !important;margin: auto;margin-top: 50px;}
-    .about-animations .small-text {color: #DB732B;font-size: 18px; line-height: 30px; margin-bottom: 0;}
+    /* .about-animations .small-text {color: #DB732B;font-size: 18px; line-height: 30px; margin-bottom: 0;} */
     .about-banner-content {padding: 100px 0;}
     .about-page header.masthead p {max-width: 800px !important;}
     .show-md-up {display: block !important;}

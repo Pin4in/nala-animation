@@ -1,0 +1,235 @@
+:root {
+    --small-circle-size: 22vh;
+    --circle-size: 76vh;
+}
+.masthead {
+    height: 100vh;
+}
+
+.accent-color {
+    color: #DB732B;
+}
+html {
+    scroll-behavior: smooth;
+  }
+
+/* About section START */
+.about {
+    padding: 0;
+}
+
+/* About intro */
+.about-intro {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    padding-top: 30px;
+    max-width: 530px;
+}
+
+.about-intro__title {
+    font-size: 18px;
+    line-height: 27px;
+}
+
+.about-intro__text {
+    font-size: 28px;
+    line-height: 42px;
+}
+
+.about-intro__content {
+    position: sticky;
+    top: 80px; 
+}
+
+.about-intro__content--fixed {
+    position: absolute;
+    width: 450px;
+}
+
+.about__item {
+    display: flex;
+    align-items: flex-start;
+    transition: opacity .3s cubic-bezier(0.65, -0.07, 0.62, 0.84);
+    flex-direction: column;
+    justify-content: center;
+}
+
+.about__item .title {
+    color: #DB732B;
+    font-size: 28px;
+    line-height: 42px;
+    font-weight: 700;
+}
+
+.about__item .description {
+    font-size: 22.5px;
+    line-height: 1.4;
+    max-width: 530px;
+    margin-top: 32px;
+}
+
+@media (max-width: 991px) {
+    .about-intro {
+        max-width: 60%;
+        margin-top: 99px;
+        margin: auto;
+        left: 0;
+        right: 0;
+        z-index: 1;
+    }
+    .about-intro__title {
+        display: none;
+    }
+    .about-intro__text {
+        background: rgb(242, 238, 247);
+        text-align: center;
+        font-size: 26px;
+        line-height: 39px;
+    }
+
+    .about__item .title {
+        font-size: 36px;
+        line-height: 54px;
+    }
+    .about__item .description {
+        font-size: 20px;
+        line-height: 30px;
+    }
+}
+
+@media (max-width: 767px) {
+    .about-intro__text {
+        font-size: 18px;
+        line-height: 27px;
+    }
+
+    .about__item .title {
+        font-size: 18px;
+        line-height: 27px;
+    }
+    .about__item .description {
+        font-size: 14px;
+        line-height: 21px;
+    }
+
+    .about-intro {
+        max-width: 268px;
+    }
+
+    .about-intro__content {
+        top: 130px;
+    }
+}
+
+
+/* About section END */
+
+
+/* Circle illustration START */
+.about-illustration {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    width: 40%;
+}
+
+.circle-wrapper {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    top: 0;
+}
+
+.circle {
+    width: var(--circle-size);
+    height: var(--circle-size);
+    position: relative;
+    margin-left: calc(var(--circle-size) / 2);
+}
+
+.circle__inner {
+    border: 1px solid rgba(29, 37, 49, 0.3);
+    width: var(--circle-size);
+    height: var(--circle-size);
+    border-radius: 50%;
+}
+
+.section-illustration {
+    background: linear-gradient(152.11deg, #CC7E4D 17.41%, #CAD4D3 142.49%);
+    font-size: var(--small-circle-size);
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    transform: scale(0.1);
+    padding: .2em;
+}
+.circle__radius-line:nth-child(3) .section-illustration img {
+    width: 84%;
+}
+.section-illustration img {
+    width: 100%;
+}
+
+.section-illustration {
+    left: 0;
+    top: 50%;
+    margin-top: -.5em;
+    margin-left: -.5em;
+}
+
+.circle__radius-line {
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    top: 50%;
+}
+
+.circle__radius-line:nth-child(2) {
+    transform: rotate(120deg);
+}
+
+.circle__radius-line:nth-child(3) {
+    transform: rotate(240deg);
+}
+
+@media (max-width: 991px) {
+    .about-illustration {
+        width: 100%;
+    }
+
+    .circle-wrapper {
+        overflow: hidden;
+    }
+
+    .about .container-fluid {
+        width: 100%;
+    }
+
+    .circle {
+        margin-left: 0;
+    }
+
+    .section-illustration img {
+        transform: rotate(90deg);
+    }
+
+    .about__item {
+        align-items: center;
+    }
+    .about__item .description {
+        text-align: center;
+        width: 60%;
+    }
+}
+/* Circle illustration END */
