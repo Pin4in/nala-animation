@@ -8,6 +8,7 @@ const MIN_SCALING = 0.1;
 const INITIAL_ROTATION = 240;
 const SMALL_CIRCLE_CSS_VAR = "--small-circle-size";
 const CIRCLE_CSS_VAR = "--circle-size";
+const ANIMATION_SPEED = 250;
 
 function buildThresholdList() {
     let thresholds = [];
@@ -83,11 +84,8 @@ function updateElementsSizes() {
     if (!largeScreen) {
         const r = circleSize / 2;
         const containerSize = calcHypotenuse(r, r);
-        console.log("containerSize", containerSize);
-        console.log("y", $(".circle")[0].getBoundingClientRect().y)
-        console.log("r", r);
         const top = $(".circle")[0].getBoundingClientRect().y + r - containerSize / 2;
-        console.log("top", top);
+
         $(".mobile-container").css({
             width: `${containerSize}px`,
             height: `${containerSize}px`,
@@ -111,16 +109,15 @@ function updateElementsSizes() {
         const initialRotation = window.innerWidth > 991 ? INITIAL_ROTATION : 330;
         const angle = sectionRatio * 120 + initialRotation;
 
-        console.log("old ", oldAngle)
-        console.log("new angle", -angle);
         $({ angle: oldAngle }).animate({  angle: -angle }, {
             step: function(now,fx) {
                 $circle.css('-webkit-transform',"rotate("+this.angle+'deg)'); 
                 $circle.css('-moz-transform',"rotate("+this.angle+'deg)');
                 $circle.css('transform',"rotate("+this.angle+'deg)');
             },
-            duration: 100
-        },'linear');
+            duration: ANIMATION_SPEED,
+            easing: 'linear'
+        });
         oldAngle = -angle;
     }
 
@@ -154,7 +151,6 @@ function updateElementsSizes() {
     }
 
     function onScroll() {
-        console.log("onscroll")
         rotateCircle();
 
         const scrollTop = $(document).scrollTop();
@@ -207,7 +203,6 @@ function updateElementsSizes() {
       
         return function() {
           if (isCooldown) return;
-          f.apply(this, arguments);
           isCooldown = true;
       
           setTimeout(() => {
@@ -217,7 +212,7 @@ function updateElementsSizes() {
         };
     }
 
-    const debouncedScrollHandler = debounce(onScroll, 100);
+    const debouncedScrollHandler = debounce(onScroll, ANIMATION_SPEED);
     $(window).on("scroll", (e) => {
         debouncedScrollHandler();
     });

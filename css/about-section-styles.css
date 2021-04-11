@@ -181,6 +181,7 @@ html {
     position: absolute;
     transform: scale(0.1);
     padding: .2em;
+    transition: .5s transform ease;
 }
 .circle__radius-line:nth-child(3) .section-illustration img {
     width: 84%;
