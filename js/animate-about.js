@@ -1,4 +1,3 @@
-// we don't need so many thresholds
 const numSteps = 20.0;
 
 let enteringIndex = 0;
@@ -75,7 +74,7 @@ function updateElementsSizes() {
     const screenPart = largeScreen ? 0.4 : 0.9;
     const widthLimits = innerWidth * screenPart;
 
-    const circleSize = heightLimits > widthLimits ? widthLimits : heightLimits;
+    const circleSize = heightLimits > widthLimits || !largeScreen ? widthLimits : heightLimits;
     const smalleCircleSize = Math.round(circleSize / 4.5);
     let root = document.documentElement;
     root.style.setProperty(CIRCLE_CSS_VAR, `${circleSize}px`);
@@ -92,7 +91,6 @@ function updateElementsSizes() {
         $(".mobile-container").css({
             width: `${containerSize}px`,
             height: `${containerSize}px`,
-            // top: top,
             position: "sticky",
         });
     }
