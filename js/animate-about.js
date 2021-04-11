@@ -62,46 +62,68 @@ window.addEventListener("load", (event) => {
     createObserver(elements);
   }, false);
 
+function calcHypotenuse(a, b) {
+    return (Math.sqrt((a * a) + (b * b)));
+  }
 function updateElementsSizes() {
+
     const innerHeight = window.innerHeight;
     const innerWidth = window.innerWidth;
     const VERTICAL_OFFSET = 300;
     const heightLimits = innerHeight - VERTICAL_OFFSET;
-    const screenPart = window.innerWidth > 991 ? 0.4 : 0.9;
+    const largeScreen = window.innerWidth > 991;
+    const screenPart = largeScreen ? 0.4 : 0.9;
     const widthLimits = innerWidth * screenPart;
-    console.log('widthLimits', widthLimits)
 
     const circleSize = heightLimits > widthLimits ? widthLimits : heightLimits;
     const smalleCircleSize = Math.round(circleSize / 4.5);
     let root = document.documentElement;
-    console.log("circleSize", circleSize);
-    console.log("smalleCircleSize", smalleCircleSize);
     root.style.setProperty(CIRCLE_CSS_VAR, `${circleSize}px`);
     root.style.setProperty(SMALL_CIRCLE_CSS_VAR, `${smalleCircleSize}px`);
+
+    if (!largeScreen) {
+        const r = circleSize / 2;
+        const containerSize = calcHypotenuse(r, r);
+        console.log("containerSize", containerSize);
+        console.log("y", $(".circle")[0].getBoundingClientRect().y)
+        console.log("r", r);
+        const top = $(".circle")[0].getBoundingClientRect().y + r - containerSize / 2;
+        console.log("top", top);
+        $(".mobile-container").css({
+            width: `${containerSize}px`,
+            height: `${containerSize}px`,
+            // top: top,
+            position: "sticky",
+        });
+    }
+    
 }
 
 (function($){
     const $circle = $(".circle");
-    let innerHeight = window.innerHeight;
-    let innerWidth = window.innerWidth;
-
 
     // Calculate initial sizes
     updateElementsSizes()
     $(window).on("resize", () => updateElementsSizes());
+    let oldAngle = 0;
 
     const rotateCircle = () => {
         const scrollTop = $(document).scrollTop();
         const sectionRatio = scrollTop / window.innerHeight;
         const initialRotation = window.innerWidth > 991 ? INITIAL_ROTATION : 330;
         const angle = sectionRatio * 120 + initialRotation;
-        const rotationStr = "rotate(-" + angle + "deg)";
 
-        $circle.css({
-          "-webkit-transform": rotationStr,
-          "-moz-transform": rotationStr,
-          "transform": rotationStr
-        });
+        console.log("old ", oldAngle)
+        console.log("new angle", -angle);
+        $({ angle: oldAngle }).animate({  angle: -angle }, {
+            step: function(now,fx) {
+                $circle.css('-webkit-transform',"rotate("+this.angle+'deg)'); 
+                $circle.css('-moz-transform',"rotate("+this.angle+'deg)');
+                $circle.css('transform',"rotate("+this.angle+'deg)');
+            },
+            duration: 100
+        },'linear');
+        oldAngle = -angle;
     }
 
     const setSize = (el, scaleIndex) => {
@@ -133,12 +155,13 @@ function updateElementsSizes() {
         }
     }
 
-    $(window).on("scroll", (e) => {
+    function onScroll() {
+        console.log("onscroll")
         rotateCircle();
 
         const scrollTop = $(document).scrollTop();
         const sectionNumber = Math.floor(scrollTop / window.innerHeight);
-        const remainder = scrollTop % innerHeight;
+        const remainder = scrollTop % window.innerHeight;
 
 
         if (sectionNumber === 0) {
@@ -166,18 +189,39 @@ function updateElementsSizes() {
 
         sectionIllustrations.forEach((el, i) => {
             if (i === leavingIndex) {
-                const leavingSizeRation = (innerHeight - remainder) / innerHeight;
+                const leavingSizeRation = (window.innerHeight - remainder) / window.innerHeight;
                 setSize(el, leavingSizeRation)
                 return;
             }
             if (i === enteringIndex) {
-                const sizeRation = remainder / innerHeight;
+                const sizeRation = remainder / window.innerHeight;
                 setSize(el, sizeRation);
                 return
             }
             setSize(el, 0.001);
         })
         
+    }
+
+    function debounce(f, ms) {
+
+        let isCooldown = false;
+      
+        return function() {
+          if (isCooldown) return;
+          f.apply(this, arguments);
+          isCooldown = true;
+      
+          setTimeout(() => {
+              isCooldown = false
+              f.apply(this, arguments);
+          }, ms);
+        };
+    }
+
+    const debouncedScrollHandler = debounce(onScroll, 100);
+    $(window).on("scroll", (e) => {
+        debouncedScrollHandler();
     });
 
 })(jQuery);

@@ -95,6 +95,12 @@ html {
     .about__item .description {
         font-size: 20px;
         line-height: 30px;
+        text-align: center;
+        width: 60%;
+    }
+
+    .about__item {
+        align-items: center;
     }
 }
 
@@ -111,14 +117,15 @@ html {
     .about__item .description {
         font-size: 14px;
         line-height: 21px;
+        width: 100%;
     }
 
     .about-intro {
-        max-width: 268px;
+        max-width: 320px;
     }
 
     .about-intro__content {
-        top: 130px;
+        top: 100px;
     }
 }
 
@@ -149,6 +156,7 @@ html {
     height: var(--circle-size);
     position: relative;
     margin-left: calc(var(--circle-size) / 2);
+    border-spacing: 0;
 }
 
 .circle__inner {
@@ -223,13 +231,14 @@ html {
     .section-illustration img {
         transform: rotate(90deg);
     }
-
-    .about__item {
-        align-items: center;
-    }
-    .about__item .description {
-        text-align: center;
-        width: 60%;
-    }
 }
 /* Circle illustration END */
+
+@media (max-width: 991px) {
+    .mobile-container {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
