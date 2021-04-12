@@ -249,7 +249,7 @@ html {
 /* Circle illustration END */
 
 @media (max-width: 991px) {
-    .mobile-container {
+    .about__item-inner {
         display: flex;
         align-items: center;
         flex-direction: column;

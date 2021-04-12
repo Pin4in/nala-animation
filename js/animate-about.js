@@ -1,5 +1,3 @@
-const numSteps = 20.0;
-
 let enteringIndex = 0;
 let leavingIndex = 2;
 let elements = [];
@@ -10,63 +8,17 @@ const SMALL_CIRCLE_CSS_VAR = "--small-circle-size";
 const CIRCLE_CSS_VAR = "--circle-size";
 const ANIMATION_SPEED = 250;
 
-function buildThresholdList() {
-    let thresholds = [];
-    let numSteps = 20;
-    
-    for (let i=1.0; i<=numSteps; i++) {
-        let ratio = i/numSteps;
-        thresholds.push(ratio);
-    }
-    
-    thresholds.push(0);
-    return thresholds;
-}
 
-function handleIntersect(entries) {
-    entries.forEach((entry) => {
-        const { top } = entry.intersectionRect;
-        if ( top > 0) {
-            if (entry.intersectionRatio > 0.5) {
-                entry.target.style.opacity = 1;
-            } else {
-                entry.target.style.opacity = 0;
-            }
-        } else {
-            if (entry.intersectionRatio > 0.1 && leavingIndex !== 2) {
-                entry.target.style.opacity = 0;
-            } else {
-                entry.target.style.opacity = 1;
-            }
-        }
-    });
-}
-
-function createObserver(targets) {
-    let observer;
-    
-    let options = {
-        root: null,
-        rootMargin: "0px",
-        threshold: buildThresholdList()
-    };
-    
-    observer = new IntersectionObserver(handleIntersect, options);
-    targets.forEach(item => observer.observe(item))
-}
-
-window.addEventListener("load", (event) => {
+window.addEventListener("load", () => {
     elements = [...document.querySelectorAll(".about__item")];
     sectionIllustrations = [...document.querySelectorAll(".section-illustration")];
-
-    // createObserver(elements);
-  }, false);
+}, false);
 
 function calcHypotenuse(a, b) {
     return (Math.sqrt((a * a) + (b * b)));
-  }
-function updateElementsSizes() {
+}
 
+function updateElementsSizes() {
     const innerHeight = window.innerHeight;
     const innerWidth = window.innerWidth;
     const VERTICAL_OFFSET = 300;
@@ -86,7 +38,7 @@ function updateElementsSizes() {
         const containerSize = calcHypotenuse(r, r);
         const top = $(".circle")[0].getBoundingClientRect().y + r - containerSize / 2;
 
-        $(".mobile-container").css({
+        $(".about__item-inner").css({
             width: `${containerSize}px`,
             height: `${containerSize}px`,
             position: "sticky",
@@ -97,7 +49,7 @@ function updateElementsSizes() {
 
 (function($){
     const $circle = $(".circle");
-
+  
     // Calculate initial sizes
     updateElementsSizes()
     $(window).on("resize", () => updateElementsSizes());
@@ -213,10 +165,10 @@ function updateElementsSizes() {
     }
 
     const debouncedScrollHandler = debounce(onScroll, ANIMATION_SPEED);
-    $(window).on("scroll", (e) => {
+
+    function animateSectionsEmerging() {
         var windowBottom = $(window).scrollTop() + $(window).innerHeight();
         elements.forEach(function(el, i) {
-            /* Check the location of each desired element */
             var objectBottom = $(el).offset().top + $(el).outerHeight();
             const dif = (objectBottom - windowBottom) / $(window).innerHeight();
             if (i === 0) {
@@ -224,13 +176,16 @@ function updateElementsSizes() {
                 console.log("windowBottom", windowBottom);
                 console.log('dif', dif)
             }
-            /* If the element is completely within bounds of the window, fade it in */
-            if (dif < 0.4 && dif > -0.06) { //object comes into view (scrolling down)
+            if (dif < 0.4 && dif > -0.06) {
                 if ($(el).css("opacity")==0) {$(el).fadeTo(200,1);}
-            } else { //object goes out of view (scrolling up)
+            } else {
                 if ($(el).css("opacity")==1) {$(el).fadeTo(175,0);}
             }
         });
+    }
+
+    $(window).on("scroll", (e) => {
+        animateSectionsEmerging();
         debouncedScrollHandler();
     });
 
