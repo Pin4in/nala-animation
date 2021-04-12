@@ -57,12 +57,14 @@ html {
 @media (min-width: 992px) {
     .about__item {
         padding-left: 80px;
+        padding-top: 100px;
     }
 }
 
-@media (max-height: 950px) and (min-width: 992px) {
+@media (max-height: 900px) and (min-width: 992px) {
     .about__item {
-        padding-top: 30px;
+        justify-content: flex-end;
+        padding-bottom: 80px;
     }
 }
 

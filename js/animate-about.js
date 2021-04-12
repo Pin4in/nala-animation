@@ -226,9 +226,9 @@ function updateElementsSizes() {
             }
             /* If the element is completely within bounds of the window, fade it in */
             if (dif < 0.4 && dif > -0.06) { //object comes into view (scrolling down)
-                if ($(el).css("opacity")==0) {$(el).fadeTo(250,1);}
+                if ($(el).css("opacity")==0) {$(el).fadeTo(200,1);}
             } else { //object goes out of view (scrolling up)
-                if ($(el).css("opacity")==1) {$(el).fadeTo(100,0);}
+                if ($(el).css("opacity")==1) {$(el).fadeTo(175,0);}
             }
         });
         debouncedScrollHandler();
