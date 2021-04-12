@@ -59,7 +59,7 @@ window.addEventListener("load", (event) => {
     elements = [...document.querySelectorAll(".about__item")];
     sectionIllustrations = [...document.querySelectorAll(".section-illustration")];
 
-    createObserver(elements);
+    // createObserver(elements);
   }, false);
 
 function calcHypotenuse(a, b) {
@@ -214,6 +214,23 @@ function updateElementsSizes() {
 
     const debouncedScrollHandler = debounce(onScroll, ANIMATION_SPEED);
     $(window).on("scroll", (e) => {
+        var windowBottom = $(window).scrollTop() + $(window).innerHeight();
+        elements.forEach(function(el, i) {
+            /* Check the location of each desired element */
+            var objectBottom = $(el).offset().top + $(el).outerHeight();
+            const dif = (objectBottom - windowBottom) / $(window).innerHeight();
+            if (i === 0) {
+                console.log("objectBottom", objectBottom);
+                console.log("windowBottom", windowBottom);
+                console.log('dif', dif)
+            }
+            /* If the element is completely within bounds of the window, fade it in */
+            if (dif < 0.4 && dif > -0.06) { //object comes into view (scrolling down)
+                if ($(el).css("opacity")==0) {$(el).fadeTo(250,1);}
+            } else { //object goes out of view (scrolling up)
+                if ($(el).css("opacity")==1) {$(el).fadeTo(100,0);}
+            }
+        });
         debouncedScrollHandler();
     });
 

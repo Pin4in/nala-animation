@@ -40,6 +40,7 @@ html {
 .about-intro__content {
     position: sticky;
     top: 80px; 
+    background-color: rgb(242, 238, 247);
 }
 
 .about-intro__content--fixed {
@@ -50,9 +51,19 @@ html {
 .about__item {
     display: flex;
     align-items: flex-start;
-    transition: opacity .3s cubic-bezier(0.65, -0.07, 0.62, 0.84);
     flex-direction: column;
     justify-content: center;
+}
+@media (min-width: 992px) {
+    .about__item {
+        padding-left: 80px;
+    }
+}
+
+@media (max-height: 950px) and (min-width: 992px) {
+    .about__item {
+        padding-top: 30px;
+    }
 }
 
 .about__item .title {
